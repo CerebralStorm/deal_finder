@@ -1,0 +1,2 @@
+class LiensController < ApplicationController
+end

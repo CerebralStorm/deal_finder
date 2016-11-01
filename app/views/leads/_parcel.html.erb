@@ -1,0 +1,29 @@
+<table class='table table-bordered table-striped table-condensed'>
+  <thead>
+    <tr>
+      <th>Entry number</th>
+      <th>Book</th>
+      <th>Page</th>
+      <th>Instrument Type</th>
+      <th>Recorded Date</th>
+      <th>First Party</th>
+      <th>Second Party</th>
+      <th>Consideration</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lead.parcel_entries.each do |parcel_entry| %>
+      <tr>
+        <td><%= parcel_entry.number %></td>
+        <td><%= parcel_entry.book %></td>
+        <td><%= parcel_entry.page %></td>
+        <td><%= parcel_entry.instrument_type %></td>
+        <td><%= parcel_entry.recorded_date %></td>
+        <td><%= parcel_entry.first_party %></td>
+        <td><%= parcel_entry.second_party %></td>
+        <td><%= parcel_entry.consideration %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

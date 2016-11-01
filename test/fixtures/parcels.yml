@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: MyString
+  address: MyString
+  acres: 1.5
+  land_value: 1
+  building_value: 1
+  total_value: 1
+
+two:
+  number: MyString
+  address: MyString
+  acres: 1.5
+  land_value: 1
+  building_value: 1
+  total_value: 1

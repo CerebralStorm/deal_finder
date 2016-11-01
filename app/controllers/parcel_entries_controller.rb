@@ -1,0 +1,2 @@
+class ParcelEntriesController < ApplicationController
+end

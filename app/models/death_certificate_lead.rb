@@ -1,0 +1,3 @@
+class DeathCertificateLead < Lead
+
+end

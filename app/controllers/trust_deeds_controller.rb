@@ -1,0 +1,2 @@
+class TrustDeedsController < ApplicationController
+end
