@@ -7,7 +7,7 @@ class Lead < ApplicationRecord
 
   def set_type
     self.type = 'DeathCertificateLead' if self.document_type == 'DEATHC'
-    self.type = 'NoticeOfDeafualtLead' if self.document_type == 'NT DF'
+    self.type = 'NoticeOfDefaultLead' if self.document_type == 'NT DF'
   end
 
   def parcel_entries
