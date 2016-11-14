@@ -23,7 +23,7 @@ class DeathCertificateLeadsController < ApplicationController
 
     respond_to do |format|
       if @lead.save
-        format.html { redirect_to @lead, notice: 'DeathCertificateLead was successfully created.' }
+        format.html { redirect_to @lead, flash: {success: 'DeathCertificateLead was successfully created.'} }
         format.json { render :show, status: :created, location: @lead }
       else
         format.html { render :new }
@@ -35,7 +35,7 @@ class DeathCertificateLeadsController < ApplicationController
   def update
     respond_to do |format|
       if @lead.update(lead_params)
-        format.html { redirect_to @lead, notice: 'DeathCertificateLead was successfully updated.' }
+        format.html { redirect_to @lead, flash: {success: 'DeathCertificateLead was successfully updated.'} }
         format.json { render :show, status: :ok, location: @lead }
       else
         format.html { render :edit }
@@ -47,7 +47,7 @@ class DeathCertificateLeadsController < ApplicationController
   def destroy
     @lead.destroy
     respond_to do |format|
-      format.html { redirect_to leads_url, notice: 'DeathCertificateLead was successfully destroyed.' }
+      format.html { redirect_to leads_url, flash: {success: 'DeathCertificateLead was successfully destroyed.'} }
       format.json { head :no_content }
     end
   end
@@ -58,6 +58,6 @@ class DeathCertificateLeadsController < ApplicationController
     end
 
     def lead_params
-      params.require(:lead).permit(:entry_number, :filing_date, :deceased, :address, :city, :zip, :heir, :contact_info, :assessed_value, :zillow_value)
+      params.require(:death_certificate_lead).permit(:entry_number, :filing_date, :deceased, :address, :city, :zip, :heir, :contact_info, :assessed_value, :zillow_value)
     end
 end

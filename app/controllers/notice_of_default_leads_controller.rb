@@ -23,7 +23,7 @@ class NoticeOfDefaultLeadsController < ApplicationController
 
     respond_to do |format|
       if @lead.save
-        format.html { redirect_to @lead, notice: 'NoticeOfDefaultLead was successfully created.' }
+        format.html { redirect_to @lead, flash: {success: 'NoticeOfDefaultLead was successfully created.'} }
         format.json { render :show, status: :created, location: @lead }
       else
         format.html { render :new }
@@ -35,7 +35,7 @@ class NoticeOfDefaultLeadsController < ApplicationController
   def update
     respond_to do |format|
       if @lead.update(lead_params)
-        format.html { redirect_to @lead, notice: 'NoticeOfDefaultLead was successfully updated.' }
+        format.html { redirect_to @lead, flash: {success: 'NoticeOfDefaultLead was successfully updated.'} }
         format.json { render :show, status: :ok, location: @lead }
       else
         format.html { render :edit }
@@ -47,7 +47,7 @@ class NoticeOfDefaultLeadsController < ApplicationController
   def destroy
     @lead.destroy
     respond_to do |format|
-      format.html { redirect_to leads_url, notice: 'NoticeOfDefaultLead was successfully destroyed.' }
+      format.html { redirect_to leads_url, flash: {success: 'NoticeOfDefaultLead was successfully destroyed.' } }
       format.json { head :no_content }
     end
   end
@@ -58,6 +58,6 @@ class NoticeOfDefaultLeadsController < ApplicationController
     end
 
     def lead_params
-      params.require(:lead).permit(:entry_number, :filing_date, :deceased, :address, :city, :zip, :heir, :contact_info, :assessed_value, :zillow_value)
+      params.require(:notice_of_default_lead).permit(:entry_number, :filing_date, :deceased, :address, :city, :zip, :heir, :contact_info, :assessed_value, :zillow_value)
     end
 end
