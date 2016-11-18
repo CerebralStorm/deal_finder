@@ -45,7 +45,7 @@
         <td><%= lead.try(:parcel).try(:value) %></td>
         <td><%= number_to_percentage(lead.loan_to_value) %></td>
         <td><%= link_to 'Show', lead %></td>
-        <td><%= link_to 'Edit', edit_lead_path(lead) %></td>
+        <td><%= link_to 'Edit', edit_death_certificate_lead_path(lead) %></td>
         <td><%= link_to 'Destroy', lead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to 'Letter', letter_death_certificate_lead_path(lead) %>
       </tr>
@@ -55,4 +55,4 @@
 
 <br>
 
-<%= link_to 'New Lead', new_lead_path %>
+<%= link_to 'New Lead', new_death_certificate_lead_path %>

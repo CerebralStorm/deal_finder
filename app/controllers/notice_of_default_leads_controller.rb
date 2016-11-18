@@ -47,7 +47,7 @@ class NoticeOfDefaultLeadsController < ApplicationController
   def destroy
     @lead.destroy
     respond_to do |format|
-      format.html { redirect_to leads_url, flash: {success: 'NoticeOfDefaultLead was successfully destroyed.' } }
+      format.html { redirect_to notice_of_default_leads_url, flash: {success: 'NoticeOfDefaultLead was successfully destroyed.' } }
       format.json { head :no_content }
     end
   end

@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026192254) do
+ActiveRecord::Schema.define(version: 20161114172232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "lead_stages", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "leads", force: :cascade do |t|
     t.string   "entry_number"
@@ -31,6 +37,7 @@ ActiveRecord::Schema.define(version: 20161026192254) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.string   "type"
+    t.integer  "lead_stage_id"
   end
 
   create_table "liens", force: :cascade do |t|

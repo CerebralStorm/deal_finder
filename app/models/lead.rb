@@ -1,4 +1,5 @@
 class Lead < ApplicationRecord
+  #belongs_to :lead_stage
   has_many :trust_deeds
   has_many :liens
   has_one :parcel

@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+[
+  'No Contact',
+  'Letter',
+  'Phone Call',
+  'Meeting',
+  'Closing'
+].each do |stage|
+  LeadStage.where(name: stage).first_or_create
+end

@@ -1,2 +1,0 @@
-json.extract! lead, :id, :entry_number, :filing_date, :deceased, :address, :city, :zip, :heir, :contact_info, :assessed_value, :zillow_value, :created_at, :updated_at
-json.url lead_url(lead, format: :json)

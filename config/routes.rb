@@ -5,9 +5,6 @@ Rails.application.routes.draw do
   resources :parcels
   resources :liens
   resources :trust_deeds
-  resources :leads do
-    get :letter, on: :member
-  end
 
   resources :death_certificate_leads do
     get :letter, on: :member

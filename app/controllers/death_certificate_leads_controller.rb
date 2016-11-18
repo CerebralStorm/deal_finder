@@ -47,7 +47,7 @@ class DeathCertificateLeadsController < ApplicationController
   def destroy
     @lead.destroy
     respond_to do |format|
-      format.html { redirect_to leads_url, flash: {success: 'DeathCertificateLead was successfully destroyed.'} }
+      format.html { redirect_to death_certificate_leads_url, flash: {success: 'DeathCertificateLead was successfully destroyed.'} }
       format.json { head :no_content }
     end
   end
