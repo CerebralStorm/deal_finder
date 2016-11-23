@@ -1,10 +1,13 @@
 class Lead < ApplicationRecord
-  #belongs_to :lead_stage
+  belongs_to :lead_stage
   has_many :trust_deeds
   has_many :liens
   has_one :parcel
 
   before_save :set_type
+
+  scope :by_type, -> (type) { where(type: type) }
+  scope :by_stage, -> (lead_stage) { where(lead_stage_id: lead_stage) }
 
   def set_type
     self.type = 'DeathCertificateLead' if self.document_type == 'DEATHC'
@@ -29,6 +32,10 @@ class Lead < ApplicationRecord
   def address
     return unless parcel.present?
     parcel.address
+  end
+
+  def full_address
+    [(parcel.try(:address) || address), city, zip].compact.join(', ')
   end
 
   def deceased_pretty

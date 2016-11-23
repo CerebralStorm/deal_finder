@@ -1,0 +1,6 @@
+<ul class="nav nav-tabs">
+  <li role="presentation"><%= link_to 'All', leads_path %></a></li>
+  <% LeadStage.find_each do |lead_stage| %>
+    <li role="presentation"><%= link_to lead_stage.name, leads_path(params.merge(stage: lead_stage.id).permit!) %></li>
+  <% end %>
+</ul>

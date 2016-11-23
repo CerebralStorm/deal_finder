@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'capybara'
 gem 'selenium-webdriver', '3.0.0.beta4.0'
 gem "chromedriver-helper"
+gem 'rails_admin', '~> 1.0'
 
 group :development, :test do
   gem 'dotenv-rails'

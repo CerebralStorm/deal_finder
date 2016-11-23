@@ -2,7 +2,8 @@ class LeadsController < ApplicationController
   before_action :set_lead, only: [:letter, :show, :edit, :update, :destroy]
 
   def index
-    @leads = Lead.all
+    @leads = Lead.by_type(params[:type])
+    @leads = Lead.by_stage(params[:stage])
   end
 
   def show

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'pages#index'
 
   resources :parcel_entries
@@ -6,11 +7,7 @@ Rails.application.routes.draw do
   resources :liens
   resources :trust_deeds
 
-  resources :death_certificate_leads do
-    get :letter, on: :member
-  end
-
-  resources :notice_of_default_leads do
+  resources :leads do
     get :letter, on: :member
   end
 
