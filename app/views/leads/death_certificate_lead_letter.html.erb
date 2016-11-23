@@ -2,6 +2,8 @@
   <input type="button" value="Print this page" onClick="window.print()">
 </form>
 
+<p class='hidden-print'>Don't show me</p>
+<div id='letter'>
 <div class="text-center">
   <address>
     <strong>Nick Reedy</strong>
@@ -16,14 +18,15 @@
   </address>
 </div>
 
-<h4><%= Date.today.strftime("%B %e, %Y") %></h4>
+<br />
+<p><%= Date.today.strftime("%B %e, %Y") %></p>
 
-<h1>Dear <%= @lead.heir %></h1>
+<p>Dear <%= @lead.heir %></p>
 
-<p>Hello, my name is Nick and I would like to offer my condolences on
-the passing of <%= @lead.parcel.owner_pretty %>. I too have lost loved ones and know how difficult this can be.
+<p class='indent'>Hello, my name is Nick and I would like to offer my condolences on
+the passing of <%= @lead.parcel.try(:owner_pretty) %>. I too have lost loved ones and know how difficult this can be.</p>
 
-  It is my understanding, through the Salt Lake County recorders office, the property located at <%= @lead.parcel.address %> may be available to purchase. I’m sure at this time selling this property is probably not a priority for your family, but if in the near future you decide to sell, please call me and allow me the opportunity to make you an offer.
+<p class='indent'>It is my understanding, through the Salt Lake County recorders office, the property located at <%= @lead.parcel.try(:address) %> may be available to purchase. I’m sure at this time selling this property is probably not a priority for your family, but if in the near future you decide to sell, please call me and allow me the opportunity to make you an offer.
 </p>
 <hr />
 <strong>Many people choose to sell to me for the following reasons:</strong>
@@ -36,11 +39,17 @@ the passing of <%= @lead.parcel.owner_pretty %>. I too have lost loved ones and 
 </ul>
 <hr />
 
-<p class='lead'>While I do not know your particular situation, I am prepared to do what is best for you and the estate. Feel free to call me with any questions. <strong>(801)-739-2312</strong>.  <small>If unavailable please call Tim at (801) 651-3060.</small></p>
+<p class='indent'>While I do not know your particular situation, I am prepared to do what is best for you and the estate. Feel free to call me with any questions. <strong>(801)-739-2312</strong></p>
 
+<br />
+<br />
 
 <p>My warmest regards,</p>
 
+<br />
+<br />
+<br />
+<br />
 
 <address>
   <strong>Nick Reedy</strong>
@@ -48,5 +57,5 @@ the passing of <%= @lead.parcel.owner_pretty %>. I too have lost loved ones and 
   (801)-739-2312
 </address>
 
-
 <p>PS.  I can usually pay the same or even more than what you would make if you listed with a realtor and paid commissions, repairs, closing costs and title fees.</p>
+</div>

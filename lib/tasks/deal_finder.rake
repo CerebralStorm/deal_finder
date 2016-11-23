@@ -51,6 +51,7 @@ namespace :deals do
       new_leads << lead.id if lead.changed? and lead.save
     end
 
+    #TODO find out if we got all the data
     Lead.where(id: new_leads).each do |lead|
       begin
         parcel = lead.parcel || Parcel.new(lead_id: lead.id)

@@ -2,5 +2,23 @@
 @import "bootswatch/cerulean/variables";
 @import "bootstrap";
 @import "bootswatch/cerulean/bootswatch";
+@import "froala_editor.min.css";
+@import "froala_style.min.css";
+@import "font-awesome";
 
-.tab { margin-left: 40px; }
+.tab { margin-left: 10px; }
+
+#letter {
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.indent {
+  text-indent: 50px;
+}
+
+@media print {
+  .fr-toolbar {
+    display: none !important;
+  }
+}
