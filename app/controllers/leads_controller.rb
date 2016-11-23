@@ -2,8 +2,7 @@ class LeadsController < ApplicationController
   before_action :set_lead, only: [:letter, :hide, :show, :edit, :update, :destroy]
 
   def index
-    @leads = Lead.by_type(params[:type])
-    @leads = Lead.by_stage(params[:stage])
+    @leads = Lead.by_type(params[:type]).by_stage(params[:stage]).visible
   end
 
   def show
@@ -65,6 +64,17 @@ class LeadsController < ApplicationController
     end
 
     def lead_params
-      params.require(:lead).permit(:entry_number, :filing_date, :deceased, :address, :city, :zip, :heir, :contact_info, :lead_stage_id)
+      params.require(:lead).permit(
+        :entry_number,
+        :filing_date,
+        :deceased,
+        :address,
+        :city,
+        :zip,
+        :heir,
+        :contact_info,
+        :lead_stage_id,
+        :hidden
+      )
     end
 end

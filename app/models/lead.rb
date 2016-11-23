@@ -1,5 +1,4 @@
 class Lead < ApplicationRecord
-  default_scope { where(hidden: false) }
   belongs_to :lead_stage
   has_many :trust_deeds
   has_many :liens
@@ -9,6 +8,7 @@ class Lead < ApplicationRecord
 
   scope :by_type, -> (type) { where(type: type) }
   scope :by_stage, -> (lead_stage) { where(lead_stage_id: lead_stage) }
+  scope :visible, -> { where(hidden: false) }
 
   def set_type
     self.type = 'DeathCertificateLead' if self.document_type == 'DEATHC'
