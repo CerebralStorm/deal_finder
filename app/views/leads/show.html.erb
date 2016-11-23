@@ -1,8 +1,8 @@
-<%= link_to 'Back', notice_of_default_leads_path %>
+<%= link_to 'Back', :back %>
 <div class="row">
-  <div class="col-sm-3 well well-sm"><%= render 'notice_of_default_leads/details' %></div>
-  <div class="col-sm-9"><%= render 'notice_of_default_leads/parcel' %></div>
+  <div class="col-sm-3 well well-sm"><%= render 'leads/details' %></div>
+  <div class="col-sm-9"><%= render 'leads/parcel' %></div>
 </div>
 
-<%= link_to 'Edit', edit_notice_of_default_lead_path(@lead) %> |
-<%= link_to 'Back', notice_of_default_leads_path %>
+<%= link_to 'Edit', edit_lead_path(@lead) %> |
+<%= link_to 'Back', :back %>
