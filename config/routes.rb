@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :leads do
     get :letter, on: :member
+    get :hide, on: :member
   end
 
 end

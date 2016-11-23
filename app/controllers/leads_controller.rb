@@ -1,5 +1,5 @@
 class LeadsController < ApplicationController
-  before_action :set_lead, only: [:letter, :show, :edit, :update, :destroy]
+  before_action :set_lead, only: [:letter, :hide, :show, :edit, :update, :destroy]
 
   def index
     @leads = Lead.by_type(params[:type])
@@ -14,6 +14,11 @@ class LeadsController < ApplicationController
   end
 
   def edit
+  end
+
+  def hide
+    @lead.update(hidden: true)
+    redirect_to :back
   end
 
   def letter
@@ -60,6 +65,6 @@ class LeadsController < ApplicationController
     end
 
     def lead_params
-      params.require(:lead).permit(:entry_number, :filing_date, :deceased, :address, :city, :zip, :heir, :contact_info, :assessed_value, :zillow_value)
+      params.require(:lead).permit(:entry_number, :filing_date, :deceased, :address, :city, :zip, :heir, :contact_info, :lead_stage_id)
     end
 end

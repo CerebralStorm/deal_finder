@@ -1,4 +1,5 @@
 class Lead < ApplicationRecord
+  default_scope { where(hidden: false) }
   belongs_to :lead_stage
   has_many :trust_deeds
   has_many :liens

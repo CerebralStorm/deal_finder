@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161114172232) do
+ActiveRecord::Schema.define(version: 20161123012952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,10 +34,11 @@ ActiveRecord::Schema.define(version: 20161114172232) do
     t.string   "contact_info"
     t.integer  "assessed_value"
     t.integer  "zillow_value"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "type"
     t.integer  "lead_stage_id"
+    t.boolean  "hidden",         default: false
   end
 
   create_table "liens", force: :cascade do |t|
