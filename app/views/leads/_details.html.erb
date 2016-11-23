@@ -11,6 +11,11 @@
 </p>
 
 <p>
+  <strong>Owner:</strong>
+  <%= @lead.parcel.try(:owner) %>
+</p>
+
+<p>
   <strong>Deceased:</strong>
   <%= @lead.deceased %>
 </p>
@@ -43,9 +48,4 @@
 <p>
   <strong>Assessed value:</strong>
   <%= @lead.assessed_value %>
-</p>
-
-<p>
-  <strong>Zillow value:</strong>
-  <%= @lead.zillow_value %>
 </p>

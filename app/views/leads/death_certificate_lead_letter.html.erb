@@ -21,12 +21,12 @@
 <br />
 <p><%= Date.today.strftime("%B %e, %Y") %></p>
 
-<p>Dear <%= @lead.heir %></p>
+<p>Dear <%= @lead.parcel.try(:owner).try(:titleize) %></p>
 
 <p class='indent'>Hello, my name is Nick and I would like to offer my condolences on
-the passing of <%= @lead.parcel.try(:owner_pretty) %>. I too have lost loved ones and know how difficult this can be.</p>
+the passing of <%= @lead.deceased.try(:titleize) %>. I too have lost loved ones and know how difficult this can be.</p>
 
-<p class='indent'>It is my understanding, through the Salt Lake County recorders office, the property located at <%= @lead.parcel.try(:address) %> may be available to purchase. I’m sure at this time selling this property is probably not a priority for your family, but if in the near future you decide to sell, please call me and allow me the opportunity to make you an offer.
+<p class='indent'>It is my understanding, through the Salt Lake County recorders office, the property located at <%= @lead.parcel.try(:address).try(:titleize) %> may be available to purchase. I’m sure at this time selling this property is probably not a priority for your family, but if in the near future you decide to sell, please call me and allow me the opportunity to make you an offer.
 </p>
 <hr />
 <strong>Many people choose to sell to me for the following reasons:</strong>
