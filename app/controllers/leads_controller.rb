@@ -3,6 +3,7 @@ class LeadsController < ApplicationController
 
   def index
     @leads = Lead.by_type(params[:type]).by_stage(params[:stage]).visible
+    render "#{params[:type].underscore}_index"
   end
 
   def show

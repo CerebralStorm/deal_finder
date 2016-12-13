@@ -21,7 +21,7 @@
 
   <p>Dear <%= @lead.parcel.try(:owner_pretty) %></p>
 
-  <p class='indent'>We noticed your home at (N.O.D ADDRESS 123 Firehouse Ln) is in default.</p>
+  <p class='indent'>We noticed your home at <%= @lead.parcel.try(:address).try(:titleize) %> is in default.</p>
 
   <p>We can stop the foreclosure - <strong>without bankruptcy</strong>.</p>
 

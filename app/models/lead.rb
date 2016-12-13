@@ -1,23 +1,32 @@
 class Lead < ApplicationRecord
+  SUCCESS_STATUS = 'success'
+  FAILURE_STATUS = 'failure'
+  EXPIRED_STATUS = 'expired'
   belongs_to :lead_stage
   has_many :trust_deeds
   has_many :liens
   has_one :parcel
+  has_many :parcel_entries, through: :parcel
 
   before_save :set_type
 
   scope :by_type, -> (type) { where(type: type) }
   scope :by_stage, -> (lead_stage) { where(lead_stage_id: lead_stage) }
   scope :visible, -> { where(hidden: false) }
+  scope :needs_scraping, -> { where(scrape_status: [nil, FAILURE_STATUS]) }
+
+  def complete_scrape
+    self.update_attributes(scrape_status: SUCCESS_STATUS)
+  end
+
+  def fail_scrape
+    self.update_attributes(scrape_status: FAILURE_STATUS, scrape_attempts: (self.scrape_attempts || 0) + 1)
+    self.update_attributes(scrape_status: EXPIRED_STATUS) if self.scrape_attempts > 2
+  end
 
   def set_type
     self.type = 'DeathCertificateLead' if self.document_type == 'DEATHC'
     self.type = 'NoticeOfDefaultLead' if self.document_type == 'NT DF'
-  end
-
-  def parcel_entries
-    return [] unless parcel.present?
-    parcel.parcel_entries
   end
 
   def reconveyance_count

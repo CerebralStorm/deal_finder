@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Leads</h1>
+<%= render 'leads/leads_nav' %>
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Parcel number</th>
+      <th>Filing date</th>
+      <th>Address</th>
+      <th>Owner</th>
+      <th>Owner Address</th>
+      <th>Value</th>
+      <th>Menu</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @leads.each do |lead| %>
+      <tr>
+        <td><%= lead.parcel_number %></td>
+        <td><%= lead.filing_date %></td>
+        <td><%= lead.full_address %></td>
+        <td><%= lead.try(:parcel).try(:owner) %></td>
+        <td><%= lead.try(:parcel).try(:owner_address) %></td>
+        <td><%= lead.try(:parcel).try(:value) %></td>
+        <td>
+          <ul class="nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'Show', lead_path(lead) %></li>
+                <li><%= link_to 'Edit', edit_lead_path(lead) %></li>
+                <li><%= link_to 'Hide', hide_lead_path(lead), data: { confirm: 'Are you sure?' } %></li>
+                <li><%= link_to 'Letter', letter_lead_path(lead, type: params[:type]) %></li>
+              </ul>
+            </li>
+          </ul>
+        </td>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lead', new_lead_path(type: params[:type]) %>
