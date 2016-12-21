@@ -1,46 +1,41 @@
-<form class='hidden-print'>
-  <input type="button" value="Print this page" onClick="window.print()">
-</form>
+<%= form_tag(send_letter_lead_path(@letter), id: 'send-letter-form') do %>
+  <%= @letter.html.html_safe %>
+  <hr />
+  <h2> Please verify the following information </h2>
+  <%= hidden_field_tag :html, @letter.html %>
 
-<div id='letter'>
-  <div class="text-center">
-    <address>
-      <strong>Nick Reedy</strong>
-      <br />
-      9663 South Candle Tree Ln
-      <br />
-      Sandy, Utah 84092
-      <br />
-      (801)-739-2312
-      <br />
-      nickreedy@icloud.com
-    </address>
+  <div class='form-group'>
+    <%= label_tag :name, '{{name}}' %>
+    <%= text_field_tag :name, @letter.name, class: 'form-control' %>
   </div>
 
-  <br />
+  <div class='form-group'>
+    <%= label_tag :address, '{{address}}'%>
+    <%= text_field_tag :address, @letter.address, class: 'form-control' %>
+  </div>
 
-  <p>Dear <%= @lead.parcel.try(:owner_pretty) %></p>
+  <div class='form-group'>
+    <%= label_tag :city, '{{city}}' %>
+    <%= text_field_tag :city, @letter.city, class: 'form-control' %>
+  </div>
 
-  <p class='indent'>We noticed your home at <%= @lead.parcel.try(:address).try(:titleize) %> is in default.</p>
+  <div class='form-group'>
+    <%= label_tag :state, '{{state}}' %>
+    <%= text_field_tag :state, @letter.state, class: 'form-control' %>
+  </div>
 
-  <p>We can stop the foreclosure - <strong>without bankruptcy</strong>.</p>
+  <div class='form-group'>
+    <%= label_tag :zip, '{{zip}}' %>
+    <%= text_field_tag :zip, @letter.zip, class: 'form-control' %>
+  </div>
 
-  <ol>
-    <li>We help you keep/stay in your home and lower your monthly payments</li>
-    <li>We give you cash now and you can stay in your home as long as you need</li>
-  </ol>
+  <div class='form-group'>
+    <%= label_tag :country %>
+    <%= text_field_tag :country, @letter.country, class: 'form-control' %>
+  </div>
 
-  <p>We have helped over 110 homeowners in your situation avoid foreclosure.</p>
+  <div class='form-group'>
+    <%= submit_tag "Send to Lob", id: 'send-letter-lob' %>
+  </div>
 
-  <p>For details please call me at (801) 739-2312</p>
-
-  <br />
-  <p>Sincerely,</p>
-  <br />
-
-  <address>
-    <strong>Nick Reedy</strong>
-    <br>
-    (801)-739-2312
-  </address>
-</div>
+<% end %>

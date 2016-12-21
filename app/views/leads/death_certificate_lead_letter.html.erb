@@ -1,60 +1,50 @@
-<form class='hidden-print'>
-  <input type="button" value="Print this page" onClick="window.print()">
-</form>
-
-<div id='letter'>
-  <div class="text-center">
-    <address>
-      <strong>Nick Reedy</strong>
-      <br />
-      9663 South Candle Tree Ln
-      <br />
-      Sandy, Utah 84092
-      <br />
-      (801)-739-2312
-      <br />
-      nickreedy@icloud.com
-    </address>
+<%= form_tag(send_letter_lead_path(@letter), id: 'send-letter-form') do %>
+  <%= @letter.html.html_safe %>
+  <hr />
+  <h2> Please verify the following information </h2>
+  <%= hidden_field_tag :html, @letter.html %>
+  <div class='form-group'>
+    <%= label_tag :date, '{{date}}' %>
+    <%= text_field_tag :date, @letter.date, class: 'form-control' %>
   </div>
 
-  <br />
-  <p><%= Date.today.strftime("%B %e, %Y") %></p>
+  <div class='form-group'>
+    <%= label_tag :name, '{{name}}' %>
+    <%= text_field_tag :name, @letter.name, class: 'form-control' %>
+  </div>
 
-  <p>Dear <%= @lead.parcel.try(:owner).try(:titleize) %></p>
+  <div class='form-group'>
+    <%= label_tag :deceased, '{{deceased}}' %>
+    <%= text_field_tag :deceased, @letter.deceased, class: 'form-control' %>
+  </div>
 
-  <p class='indent'>Hello, my name is Nick and I would like to offer my condolences on
-  the passing of <%= @lead.deceased.try(:titleize) %>. I too have lost loved ones and know how difficult this can be.</p>
+  <div class='form-group'>
+    <%= label_tag :address, '{{address}}' %>
+    <%= text_field_tag :address, @letter.address, class: 'form-control' %>
+  </div>
 
-  <p class='indent'>It is my understanding, through the Salt Lake County recorders office, the property located at <%= @lead.parcel.try(:address).try(:titleize) %> may be available to purchase. I’m sure at this time selling this property is probably not a priority for your family, but if in the near future you decide to sell, please call me and allow me the opportunity to make you an offer.
-  </p>
-  <hr />
-  <strong>Many people choose to sell to me for the following reasons:</strong>
+  <div class='form-group'>
+    <%= label_tag :city, '{{city}}' %>
+    <%= text_field_tag :city, @letter.city, class: 'form-control' %>
+  </div>
 
-  <ul>
-    <li>You pay no realtor commissions, closing costs or title fees</li>
-    <li>I buy the property in “as is” condition, no repairs required</li>
-    <li>Your tenants don’t have to move, I can be flexible and discrete</li>
-    <li>I can close in as little as 24 hours or at your convenience</li>
-  </ul>
-  <hr />
+  <div class='form-group'>
+    <%= label_tag :state, '{{state}}' %>
+    <%= text_field_tag :state, @letter.state, class: 'form-control' %>
+  </div>
 
-  <p class='indent'>While I do not know your particular situation, I am prepared to do what is best for you and the estate. Feel free to call me with any questions. <strong>(801)-739-2312</strong></p>
+  <div class='form-group'>
+    <%= label_tag :zip, '{{zip}}' %>
+    <%= text_field_tag :zip, @letter.zip, class: 'form-control' %>
+  </div>
 
-  <br />
-  <br />
+  <div class='form-group'>
+    <%= label_tag :country %>
+    <%= text_field_tag :country, @letter.country, class: 'form-control' %>
+  </div>
 
-  <p>My warmest regards,</p>
+  <div class='form-group'>
+    <%= submit_tag "Send to Lob", id: 'send-letter-lob', class: 'btn btn-primary' %>
+  </div>
 
-  <br />
-  <br />
-  <br />
-  <br />
-
-  <address>
-    <strong>Nick Reedy</strong>
-    <br>
-    (801)-739-2312
-  </address>
-
-  <p>PS.  I can usually pay the same or even more than what you would make if you listed with a realtor and paid commissions, repairs, closing costs and title fees.</p>
-</div>
+<% end %>

@@ -22,7 +22,21 @@ class LeadsController < ApplicationController
   end
 
   def letter
+    klass = "#{params[:type]}LobLetter".constantize
+    @letter = klass.new(
+      name: @lead.parcel.owner_pretty,
+      address: @lead.parcel.address,
+      city: @lead.parcel.city,
+      state: @lead.parcel.state,
+      zip: @lead.parcel.zip,
+      deceased: @lead.deceased_pretty,
+      country: 'US'
+    )
     render "#{params[:type].underscore}_letter"
+  end
+
+  def send_letter
+    render json: LobWorker.new(params).send_letter
   end
 
   def create
