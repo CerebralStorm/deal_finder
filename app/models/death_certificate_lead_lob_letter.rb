@@ -10,34 +10,12 @@ class DeathCertificateLeadLobLetter < LobLetter
     <html>
     <head>
     <style>
-      .text-center {
-        text-align: center;
-      }
-      .indent {
-        text-indent: 50px;
-      }
+      #{styles}
     </style>
     </head>
 
     <body>
       <div>
-        <div class='"'text-center'"'>
-          <address>
-            <strong>Nick Reedy</strong>
-            <br />
-            9663 South Candle Tree Ln
-            <br />
-            Sandy, Utah 84092
-            <br />
-            (801)-739-2312
-            <br />
-            nickreedy@icloud.com
-          </address>
-        </div>
-
-        <br />
-        <p>{{date}}</p>
-
         <p>Dear {{name}}</p>
 
         <p class='indent'>Hello, my name is Nick and I would like to offer my condolences on

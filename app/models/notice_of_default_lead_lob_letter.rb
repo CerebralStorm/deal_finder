@@ -5,33 +5,12 @@ class NoticeOfDefaultLeadLobLetter < LobLetter
     <html>
     <head>
     <style>
-      .text-center {
-        text-align: center;
-      }
-      .indent {
-        text-indent: 50px;
-      }
+      #{styles}
     </style>
     </head>
 
     <body>
       <div id='letter'>
-        <div class='text-center'>
-          <address>
-            <strong>Nick Reedy</strong>
-            <br />
-            9663 South Candle Tree Ln
-            <br />
-            Sandy, Utah 84092
-            <br />
-            (801)-739-2312
-            <br />
-            nickreedy@icloud.com
-          </address>
-        </div>
-
-        <br />
-
         <p>Dear {{name}}</p>
 
         <p class='indent'>We noticed your home at {{address}}, {{city}}, {{state}}, {{zip}} is in default.</p>
